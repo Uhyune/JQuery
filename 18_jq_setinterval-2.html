@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset = "UTF-8">
+   <title></title>
+   <!--jQuery import방식 2(CDN방식)-->
+   <script src ="JS/jquery-3.6.0.min.js"></script>
+   <script>
+      //java, Html, CSS, javaScrip, jQuery 문자열을 배열에 저장하고
+      //1초마다 순차적으로 #myDiv위치에 출력
+      var subject = ['java', 'HTML', 'CSS', 'JavaScript', 'jQuery'];
+      var index = 0;
+      var timer = null;
+      //제이쿼리 방식으로 연결
+      $(document).ready(function(){
+         $("#startJQ").click(start);// = $("#startJQ").on("click",start); 이렇게 써도 동일!
+         $("#stopJQ").click(그만);
+
+      });
+      function start(){
+         console.log("function start()실행");
+         //타이머 객체가 없으면 생성
+         if(timer==null){
+            timer = setInterval(fnDisplaySubject, 1000);
+         };
+         console.log("timer: "+timer);
+      };
+      function fnDisplaySubject(){
+         $("#myDiv").html(subject[index++]);
+         if(index >= subject.length){
+            index = 0;
+            //인덱스번호(index)가 배열의 크기가와 같거나 크면 0으로 초기화            
+         }
+      };
+      function stop(){
+         console.log("function stop()실행");
+         clearInterval(timer);
+         timer = null;
+      }
+
+      //JavaScript를 사용 - 이벤트연결처리
+      window.onload = function(){
+         console.log(">>>window.onload 실행");
+         var startJS = document.getElementById("startJS");
+         var stopJS = document.getElementById("stopJS");
+         //startJS.onclick = start;
+         startJS.addEventListener("click",start);
+         stopJS.addEventListener("click",stop);
+      };
+   </script>
+</head>
+<body>
+   <button id="startJQ">목록보여주기 (JQ이벤트 연결)</button>
+   <button id="stopJQ">중지(JQ이벤트연결)</button>
+   <hr>
+   <!--HTML에서 이벤트 연결-->
+   <button onclick="start()">목록보여주기(HTML이벤트연결 - inline방식)</button>
+   <button onclick="stop()">중지(HTML이벤트연결 - inline방식)</button>
+   <hr>
+   <button id="startJS">목록보여주기 (JavaScript이벤트 연결)</button>
+   <button id="stopJS">중지(JavaScript이벤트연결)</button>
+   
+   <!--java, Html, CSS, javaScrip, jQuery가 계속 보여지도록.
+   중지버튼이 눌러지기 전까지 계속 반복하도록!-->
+   <p>java, Html, CSS, javaScrip, jQuery</p>
+   <hr>
+   <div id="myDiv">Java</div>
+
+   
+</body>
+</html>

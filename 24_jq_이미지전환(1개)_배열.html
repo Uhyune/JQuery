@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 이미지 전환 </title>
+    <!--jQuery import 방식1 (CDN 방식)-->
+    <script src ="JS/jquery-3.6.0.min.js"></script>
+  <script>
+   //prev, next 버튼이 클릭되었을 때 처리
+   //prev: 이전 이미지 표시, next: 다음 이미지 표시
+   //배열에 저장돤 이미지 파일명 사용해서 이미지 표시
+   //배열 데이터 입력 ["abv.jpg","bbb.png","ab1234.jpg"]
+   var imgNames = new Array();
+//    imgNames = ["bimg01.jpg","bimg02.jpg"....];
+
+    for(let i=0; i<10; i++){
+        let imgNum= i + 1;
+        if (imgNum<10){
+            imgNames[i] = "bimg0" + imgNum + ".jpg";
+        } else {
+            imgNames[i] = "bimg" + imgNum + ".jpg";
+        }
+    }
+   $(document).ready(function(){
+       var idx = 0;
+       //배열에서 다음 이미지 파일명 가져다 사용
+        $("#next").click(function(){
+            idx++;
+            if(idx>=imgNames.length){
+                idx = 0;
+            }
+            $("img").prop("src","images/"+ imgNames[idx]);
+        });
+        //prev : 이전 이미지 (배열에 있는)
+        $("#prev").click(function(){
+            idx--;
+            if(idx<0){
+                idx = imgNames.length -1;
+            }
+            $("img").prop("src","images/"+imgNames[idx]);
+        });
+        
+   });
+  </script>
+<style>
+    div {
+      width: 320px; 
+      margin: 0 auto; 
+      position: relative;
+    }
+    div > a {
+      /*위치 지정*/
+      position: absolute;
+      top: 150px; left: 20px;
+      /*모양 지정*/
+      width: 50px; height: 40px;
+      background-color: cornsilk;
+      border-radius: 25%;
+      /*텍스트 설정*/
+      text-decoration: none;
+      text-align: center;
+      line-height: 40px;
+    }
+    #next {left: 250px;}
+</style>
+</head>
+<body>
+  <div>
+    <img src="images/bimg01.jpg" alt="상품이미지">
+    <a id="prev" href="#">prev</a>
+    <a id="next" href="#">next</a>
+
+  </div>
+</body>
+</html>

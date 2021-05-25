@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title></title>
+	<script src ="JS/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("p:eq(0)").click(function(){
+				$("img").slideToggle(2000);
+			});
+			//==========================================
+			//두번째 p 태그가 클릭되면 -> 두번째 p태그가 사라지고, 3번째 p태그가 나타나게 처리
+			$("#p2").click(function(){
+				//세번째 p태그 나타나고, 두번째 p태그 사라지기
+				var $this = $(this); //this 이벤트 발생 객체
+				$this.css("background-color","yellow");
+				$("#p3").slideDown("slow",function(){
+					$("#p2").slideUp("slow");
+				});
+			});
+			//세번째 p태그 클릭되면 -> 세번째 p태그가 사라지고 두번째 p태그가 나타나도록
+			$("#p3").click(function(){
+				//세번째 p태그가 사라지고 두번쨰 p태그 나타나게
+				var $this = $(this);
+				$this.css("background-color","green");
+				$this.slideUp(200,function(){
+					$("#p2").slideDown(200);
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<p>첫번째 : 자동차 보이기, 자동차 숨기기</p>
+	<p id = "p2">두번째 p태그</p>
+	<p id = "p3">세번째 p태그</p>
+	<p>네번째 p태그</p>
+	<hr>
+	<img src = "images/car1.jpg" alt="자동차 사진">
+</body>
+</html>

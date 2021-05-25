@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title></title>
+     <script src ="JS/jquery-3.6.0.min.js"></script>
+	<script>
+		//JavaScript Dom 객체 다루기
+        window.onload = function() {
+            document.getElementById("id1").style.color="blue";
+        };
+        //제이쿼리 사용방식 3가지()
+        //방식 1 : jQuery(document).ready(function(){});
+        //         $(document).ready(function(){});
+        jQuery(document).ready(function(){
+            jQuery("#id1").css("background-color","yellow");
+        });
+        $(document).ready(function(){
+            $("#id1").css("border", "3px solid red");
+        });
+
+        //----------------------------------------------------
+        //방식 2 : $().ready(function(){});
+        $().ready(function(){
+            $("#id1").css("background-color","green");
+        });
+
+        //방식 3 : $(function(){});
+        $(function(){
+            $("#id1").css("background-color","orange");
+        });
+        
+	</script>
+</head>
+<body>
+    <h1 id="id1">제이쿼리</h1>
+	<script>
+        $("#id1").css("border","1px solid black");
+    </script> 
+</body>
+</html>

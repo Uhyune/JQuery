@@ -1,0 +1,35 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title></title>
+	<script src ="JS/jquery-3.6.0.min.js"></script>
+	<script>
+        $(document).ready(function(){
+            var subject = ['java','html','css','javascript','jQuery'];
+            var index = 0;
+            var timer = setInterval(function(){
+                console.log(index+":"+subject[index]);
+
+
+                index++;
+
+                if (index >= subject.length){
+                    index = 0;
+                }
+            },1000);
+
+            $("#stop").click(function(){
+                console.log("timer동작 취소");
+                clearInterval(timer);
+            });
+        });
+		
+	</script>
+</head>
+<body>
+	<button id="stop">중지</button>
+    <div id="myDiv">Java</div>
+</body>
+</html>
