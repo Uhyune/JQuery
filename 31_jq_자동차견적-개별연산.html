@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset = "UTF-8">
+   <title></title>
+   <script src ="JS/jquery-3.6.0.min.js"></script>
+   <style>
+       #carZone{
+           width: 600px;
+           margin: auto;
+           border: 1px solid gray;
+           }
+           h1{text-align: center;}
+           #car {
+               width: 100%;
+               border-collapse: collapse;
+           }
+           #car th, #car td{
+               border: 1px solid black;
+               text-align: center;
+           }
+           #car thead{background-color: gray;}
+           #totalTxt{
+               background-color: gray;
+           }
+           #total{
+               border: none;
+               text-align: center;
+               font-size: 1.5em;
+               background-color: white;
+           }
+
+   </style>
+   <script>
+     $(document).ready(function(){
+         $(".opt").change(function(){
+            
+            let totalValue = parseInt($("#total").val());
+
+            if(this.checked) {
+                totalValue += Number($(this).val());
+            } else {
+                totalValue -= Number($(this).val());
+            }
+            $("#total").val(totalValue);
+
+         });
+     })
+   </script>
+</head>
+<body>
+   <div id ="carZone">
+      <h1>자동차 견적</h1>
+      <p><img src="images/car1.jpg" alt="자동차 이미지"></p>
+      <table id="car">
+         <colgroup>
+         <col width="50%">
+         <col width="30%">
+      </colgroup>
+      <thead>
+         <tr>
+            <th>옵션</th>
+
+
+
+
+
+            <th>추가가격</th>
+            <th>선택여부</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>인조가죽시트</td>
+            <td>300000</td>
+            <td><input type="checkbox" value="300000" id="opt1" class="opt"></td>
+         </tr>
+         <tr>
+            <td>네비게이션</td>
+            <td>400000</td>
+            <td><input type="checkbox" value="400000" id="opt2" class="opt"></td>
+         </tr>
+         <tr>
+            <td>썬루프</td>
+            <td>500000</td>
+            <td><input type="checkbox" value="500000" id="opt3" class="opt"></td>
+         </tr>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td id="totalTxt">차량금액(옵션포함)</td>
+            <td colspan="2">
+               <input type="text" value="20000000" id="total">
+            </td>
+         </tr>
+      </tfoot>
+      </table>
+
+   </div>
+
+</body>
+</html>

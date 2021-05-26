@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>animate 취소</title>
+	<script src ="JS/jquery-3.6.0.min.js"></script>
+	<script>
+		$(function(){
+         $("#run").click(function(){
+            $("h1").animate({"margin-left": "300px"}, 3000)
+                  .animate({"margin-left": "0px"}, 3000);
+         });
+         //stop 처리 (한번)
+         $("#stop").click(function(){
+            $("h1").stop();
+         });
+         //두번 연속 stop 처리 (두번)
+         $("#stopstop").click(function(){
+            $("h1").stop().stop();
+         });
+         //큐에 대기중 작업 삭제
+         $("#clearQueue").click(function(){
+            $("h1").clearQueue();
+         });
+         //큐에 있던 동작 삭제 stop
+         $("#clearQueuestop").click(function(){
+            $("h1").clearQueue().stop();
+         });
+
+         //stop처리 한번 + 큐 작업 취소 : 모든 움직임 중단
+         $("#stopTrue").click(function(){
+            $("h1").stop(true);
+         });
+      });
+	</script>
+    <style>
+        /* h1 {margin-left: 300px;} */
+    </style>
+</head>
+<body>
+    <button id="run">run</button>
+    <button id="stop">stop</button>
+    <button id="stopstop">stopstop</button>
+    <button id="clearQueue">clearQueue</button>
+    <button id="clearQueuestop">clearQueuestop</button>
+    <button id="stopTrue">stopTrue</button>
+    <h1>abcde</h1>
+	
+</body>
+</html>
